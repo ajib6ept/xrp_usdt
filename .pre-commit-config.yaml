@@ -1,0 +1,57 @@
+repos:
+  - repo: meta
+    hooks:
+      - id: check-hooks-apply
+      - id: check-useless-excludes
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        name: isort (python)
+
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+        args: [--line-length=79]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.960
+    hooks:
+      - id: mypy
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 4.0.1
+    hooks:
+      - id: flake8
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-builtin-literals
+      - id: check-toml
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+
+  - repo: local
+    hooks:
+      - id: make-test
+        name: make-test
+        entry: make test
+        language: system
+        pass_filenames: false
+        always_run: true
+        verbose: true
+
+      - id: make-lint
+        name: make-lint
+        entry: make lint
+        language: system
+        pass_filenames: false
+        always_run: true
+        verbose: true
