@@ -16,3 +16,5 @@ test-coverage:
 
 xrp-usdt:
 	poetry run python xrp-usdt/main.py	
+
+.PHONY: test xrp-usdt
